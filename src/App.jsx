@@ -1,37 +1,29 @@
 import './App.css';
-import Header from './components/Header';
-import Main from './components/Main';
-import Footer from './components/Footer';
-import Button from './components/Button';
+import { useState } from 'react';
+import Bulb from './components/Bulb';
+import Counter from './components/Counter';
 
 function App() {
-  const buttonProps = {
-    text: '메일',
-    color: 'lightcoral',
-    a: 1,
-    b: 2,
-    c: 3,
-  };
+  // const [count, setCount] = useState(0);
+
   return (
     <>
-      {/* <Header />
-      <Main />
-      <Footer /> */}
-      <Button {...buttonProps} />
-      <Button text={'카페'} />
-      <Button text={'블로그'}>
-        <div>자식요소</div>
-        <Header />
-      </Button>
+      <Bulb />
+      <Counter />
     </>
   );
 }
-//js 함수가 html 태그를 반환하는 함수를 컴포넌트라고 부름
-//컴포넌트는 반드시 첫글자가 대문자
-//부모와 자식 컴포넌트 개념이 존재  App -> Header (게층구조)
-//모듈화를 위해 컴포넌트 별로 나눠서 개발
 
 export default App;
 
-//자식요소로 배치된 div태그가 자동으로 children이라는 props로 전달이 됨
-//props는 부모에서 자식으로만 전달이 가능함 반대의 경우는 불가능
+//컴포넌트의 state 값이 바뀌면 컴포넌트는 return을 다시함 그래서 다시 리랜더링함.
+//리액트 컴포넌트는 state 값이 변경되어야지만 리랜더링이 되기 때문에 일반 변수를 사용하지 않는 것
+//Bulb 컴포넌트에 light값을 보내줌
+
+/**
+ * 1. 자신의 state 값이 변경되었을 때,
+ * 2. 자신의 props 값이 변경되었을 때
+ * 3. 부모컴포넌트가 리랜더링 되면 자식 컴포넌트도 리랜더링 됨 : + 버튼을 누르면 Bulb 컴포넌트가 리랜더링 되는 이유
+ * count state가 App 컴포넌트에서 리랜더링 되면 App 컴포넌트의 자식 컴포넌트인 Bulb는 리랜더링이 발생함
+ * 이런 의미없는 리랜더링인 성능저하를 초래하고, 방지하기 위해 컴포넌트를 분리해주는 것이 좋음
+ */
