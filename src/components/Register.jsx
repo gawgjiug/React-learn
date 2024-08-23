@@ -17,6 +17,7 @@ const Register = () => {
   });
 
   const onChange = (e) => {
+    console.log(e.target.name, e.target.value);
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -53,7 +54,7 @@ const Register = () => {
       </div>
 
       <div>
-        <textare name="bio" value={input.bio} onChange={onChange}></textare>
+        <textarea name="bio" value={input.bio} onChange={onChange}></textarea>
       </div>
     </div>
   );
