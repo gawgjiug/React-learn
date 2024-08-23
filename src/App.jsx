@@ -1,12 +1,13 @@
 import './App.css';
 import { useState } from 'react';
 import Register from './components/Register';
+import HookExam from './components/HookExam';
 function App() {
   // const [count, setCount] = useState(0);
 
   return (
     <>
-      <Register />
+      <HookExam />
     </>
   );
 }
