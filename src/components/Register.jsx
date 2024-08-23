@@ -2,45 +2,49 @@
 //2. 생년월일
 //3. 국적
 //4. 자기소개
+
+//name state와 setName이라는 함수 만들고 초기값 빈 문자열
+//사용자가 텍스트를 입력하면 입력된 텍스트를 name state에 저장
+//최종적으로 name state에 입력한 값이 보관이 될 것임
+
 import { useState } from 'react';
 const Register = () => {
-  const [name, setName] = useState('이름');
-  const [date, setDate] = useState('');
-  const [country, setCountry] = useState('');
-  const [bio, setBio] = useState('');
-  //name state와 setName이라는 함수 만들고 초기값 빈 문자열
-  //사용자가 텍스트를 입력하면 입력된 텍스트를 name state에 저장
-  const onChangeName = (e) => {
-    setName(e.target.value);
-    //최종적으로 name state에 입력한 값이 보관이 될 것임
-  };
+  const [input, setInput] = useState({
+    name: '',
+    date: '',
+    country: '',
+    bio: '',
+  });
 
-  const onChangeDate = (e) => {
-    setDate(e.target.value);
-    console.log(e.target.value);
-  };
-
-  const onChangeCountry = (e) => {
-    setCountry(e.target.value);
-    console.log(e.target.value);
-  };
-
-  const onChangeBio = (e) => {
-    console.log(e.target.value);
-    setBio(e.target.value);
+  const onChange = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+      //프로퍼티의 키 자리에 대괄호 열고 변수 이름을 씀
+    });
   };
 
   return (
     <div>
       <div>
-        <input value={name} onChange={onChangeName} placeholder={'이름'} />
+        <input
+          name="name"
+          value={input.name}
+          onChange={onChange}
+          placeholder={'이름'}
+        />
       </div>
 
       <div>
-        <input value={date} type="date" onChange={onChangeDate}></input>
+        <input
+          name="date"
+          value={input.date}
+          type="date"
+          onChange={onChange}
+        ></input>
       </div>
       <div>
-        <select onChange={onChangeCountry} value={country}>
+        <select name="country" onChange={onChange} value={input.country}>
           <option></option>
           <option>한국</option>
           <option>미국</option>
@@ -49,7 +53,7 @@ const Register = () => {
       </div>
 
       <div>
-        <textarea value={bio} onChange={onChangeBio}></textarea>
+        <textare name="bio" value={input.bio} onChange={onChange}></textare>
       </div>
     </div>
   );
