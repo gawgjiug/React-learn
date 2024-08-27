@@ -60,6 +60,7 @@ function App() {
 
   const onUpdate = (targetId) => {
     //todos State의 값들 중에 id와 일치하는 id를 갖는 투두아이템의 isDone 변경
+    //action 함수
     dispatch({
       type: 'UPDATE',
       targetId: targetId,
